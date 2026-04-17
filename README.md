@@ -30,3 +30,5 @@ D --> E[API Gemini]
 E --> F[Resposta]
 F --> G[Usuário]
 ```
+
+Resolve #1
