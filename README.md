@@ -11,3 +11,5 @@ Problema que resolve:** Ajuda a gerar informação sobre o clima do dia.
 | Ronald Leandro Feliciano Silva | @ronaldszs1 |
 | Maria Teodora Santana de Martin | @sant6na |
 | Gabriel Yamazoe | @amarelons |
+
+Atualização do diagrama de arquitetura
