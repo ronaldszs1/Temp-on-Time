@@ -32,3 +32,25 @@ F --> G[Usuário]
 ```
 
 Resolve #1
+
+## Arquitetura
+
+```mermaid
+flowchart LR
+A[Usuário] --> B[Formulário n8n]
+B --> C[Processamento]
+C --> D[API externa]
+D --> E[Resposta]
+
+
+---
+
+## 🔹 4. Adicionar explicação (IMPORTANTE pra nota)
+
+Logo abaixo, coloca:
+
+```md id="t7h2xq"
+## Como funciona
+
+O usuário envia dados através de um formulário no n8n.  
+O sistema processa essas informações, consulta uma API externa e retorna uma resposta automaticamente.
