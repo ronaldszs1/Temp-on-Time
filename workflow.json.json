@@ -1,0 +1,181 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Temp on Time",
+        "formDescription": "Consulta de clima e temperatura",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Cidade"
+            },
+            {
+              "fieldLabel": "temperatura",
+              "fieldType": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9ae8faff-4eea-48c9-8d36-5757bfee56d0",
+      "name": "On form submission",
+      "webhookId": "7819041f-0a16-4986-901a-1a748cd96d1d"
+    },
+    {
+      "parameters": {
+        "url": "https://jsonplaceholder.typicode.com/todos/1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "175a870c-fc9a-4485-b827-60aa4e85b38f",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a8e836dc-47cf-4a2b-9502-16fe6437b654",
+              "leftValue": null,
+              "rightValue": 30,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": false
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "890b113a-4948-4871-a0b0-1801482f2101",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b3857337-69df-40f3-94dd-657c7b916063",
+              "name": "mensagem",
+              "value": "Muito quente",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        624,
+        -96
+      ],
+      "id": "da7f9b45-8272-424b-9d21-9d80c693c4b4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5341bc4d-bcb5-46d5-b46d-1cfdc224b61f",
+              "name": "mensagem",
+              "value": "Temperatura ok",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        624,
+        96
+      ],
+      "id": "cb2d04dd-f081-4092-9c8f-e37351828b28",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "11221f9e-951a-4407-9cdc-faf4b28df7d9",
+  "meta": {
+    "instanceId": "4b5876431c0372eb79a6ba3e7ec8b883c45c93f04575f14599757831b94956f5"
+  },
+  "id": "zNWVXrK1DcK7JnUA",
+  "tags": []
+}
